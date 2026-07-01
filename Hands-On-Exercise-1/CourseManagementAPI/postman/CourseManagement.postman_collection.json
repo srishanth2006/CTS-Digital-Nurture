@@ -1,0 +1,226 @@
+{
+  "info": {
+    "name": "CourseManagementAPI",
+    "description": "Postman collection for the Course Management API (Django REST Framework). Covers Departments, Students, Courses, Enrollments, the custom /courses/{id}/students/ action, and the Part 1 (FBV) / Part 2 (CBV) demonstration endpoints.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "base_url", "value": "http://127.0.0.1:8000/api" },
+    { "key": "department_id", "value": "1" },
+    { "key": "student_id", "value": "1" },
+    { "key": "course_id", "value": "1" },
+    { "key": "enrollment_id", "value": "1" }
+  ],
+  "item": [
+    {
+      "name": "Departments",
+      "item": [
+        {
+          "name": "List Departments",
+          "request": { "method": "GET", "url": "{{base_url}}/departments/" }
+        },
+        {
+          "name": "Create Department",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{base_url}}/departments/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Computer Science\",\n  \"description\": \"Department of Computer Science\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Retrieve Department",
+          "request": { "method": "GET", "url": "{{base_url}}/departments/{{department_id}}/" }
+        },
+        {
+          "name": "Update Department",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{base_url}}/departments/{{department_id}}/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Computer Science Updated\",\n  \"description\": \"Updated description\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Department",
+          "request": { "method": "DELETE", "url": "{{base_url}}/departments/{{department_id}}/" }
+        },
+        {
+          "name": "Department Courses (custom action)",
+          "request": { "method": "GET", "url": "{{base_url}}/departments/{{department_id}}/courses/" }
+        },
+        {
+          "name": "Department Students (custom action)",
+          "request": { "method": "GET", "url": "{{base_url}}/departments/{{department_id}}/students/" }
+        }
+      ]
+    },
+    {
+      "name": "Students",
+      "item": [
+        {
+          "name": "List Students",
+          "request": { "method": "GET", "url": "{{base_url}}/students/" }
+        },
+        {
+          "name": "Create Student",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{base_url}}/students/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Alice Johnson\",\n  \"email\": \"alice@example.com\",\n  \"phone\": \"1234567890\",\n  \"department\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "Retrieve Student",
+          "request": { "method": "GET", "url": "{{base_url}}/students/{{student_id}}/" }
+        },
+        {
+          "name": "Update Student",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{base_url}}/students/{{student_id}}/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Alice J. Updated\",\n  \"email\": \"alice@example.com\",\n  \"phone\": \"1234567890\",\n  \"department\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Student",
+          "request": { "method": "DELETE", "url": "{{base_url}}/students/{{student_id}}/" }
+        },
+        {
+          "name": "Student Courses (custom action)",
+          "request": { "method": "GET", "url": "{{base_url}}/students/{{student_id}}/courses/" }
+        }
+      ]
+    },
+    {
+      "name": "Courses",
+      "item": [
+        {
+          "name": "List Courses",
+          "request": { "method": "GET", "url": "{{base_url}}/courses/" }
+        },
+        {
+          "name": "Create Course",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{base_url}}/courses/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Intro to Programming\",\n  \"code\": \"CS101\",\n  \"credits\": 4,\n  \"department\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "Retrieve Course",
+          "request": { "method": "GET", "url": "{{base_url}}/courses/{{course_id}}/" }
+        },
+        {
+          "name": "Update Course",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{base_url}}/courses/{{course_id}}/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Intro to Programming Updated\",\n  \"code\": \"CS101\",\n  \"credits\": 4,\n  \"department\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Course",
+          "request": { "method": "DELETE", "url": "{{base_url}}/courses/{{course_id}}/" }
+        },
+        {
+          "name": "Course Students (custom action)",
+          "request": { "method": "GET", "url": "{{base_url}}/courses/{{course_id}}/students/" }
+        }
+      ]
+    },
+    {
+      "name": "Enrollments",
+      "item": [
+        {
+          "name": "List Enrollments",
+          "request": { "method": "GET", "url": "{{base_url}}/enrollments/" }
+        },
+        {
+          "name": "Create Enrollment",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{base_url}}/enrollments/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"student\": 1,\n  \"course\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "Retrieve Enrollment",
+          "request": { "method": "GET", "url": "{{base_url}}/enrollments/{{enrollment_id}}/" }
+        },
+        {
+          "name": "Delete Enrollment",
+          "request": { "method": "DELETE", "url": "{{base_url}}/enrollments/{{enrollment_id}}/" }
+        },
+        {
+          "name": "Create Duplicate Enrollment (expect 400)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{base_url}}/enrollments/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"student\": 1,\n  \"course\": 1\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Part 1 - Function-Based Views",
+      "item": [
+        {
+          "name": "FBV: List/Create Departments",
+          "request": { "method": "GET", "url": "{{base_url}}/fbv/departments/" }
+        },
+        {
+          "name": "FBV: Department Detail",
+          "request": { "method": "GET", "url": "{{base_url}}/fbv/departments/{{department_id}}/" }
+        }
+      ]
+    },
+    {
+      "name": "Part 2 - Class-Based Views",
+      "item": [
+        {
+          "name": "CBV: APIView Students",
+          "request": { "method": "GET", "url": "{{base_url}}/cbv/students/" }
+        },
+        {
+          "name": "CBV: Generic List/Create Students",
+          "request": { "method": "GET", "url": "{{base_url}}/cbv/students/generic/" }
+        },
+        {
+          "name": "CBV: Generic Student Detail",
+          "request": { "method": "GET", "url": "{{base_url}}/cbv/students/generic/{{student_id}}/" }
+        }
+      ]
+    }
+  ]
+}
