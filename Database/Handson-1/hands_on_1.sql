@@ -1,14 +1,8 @@
--- ==========================================
--- Hands-On 1 : College Database
--- ==========================================
 
--- Step 1 : Create Database
 CREATE DATABASE college_db;
 USE college_db;
 
--- ==========================================
--- Step 2 : Create Tables
--- ==========================================
+
 
 CREATE TABLE departments (
     department_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -57,9 +51,7 @@ CREATE TABLE professors (
         REFERENCES departments(department_id)
 );
 
--- ==========================================
--- Step 3 : Insert Records
--- ==========================================
+
 
 INSERT INTO departments(dept_name, hod_name, budget)
 VALUES
@@ -91,9 +83,6 @@ VALUES
 ('Dr. Kumar','kumar@gmail.com',2,72000),
 ('Dr. Singh','singh@gmail.com',3,70000);
 
--- ==========================================
--- Step 4 : Display Records
--- ==========================================
 
 SELECT * FROM departments;
 SELECT * FROM students;
@@ -101,24 +90,17 @@ SELECT * FROM courses;
 SELECT * FROM professors;
 SELECT * FROM enrollments;
 
--- ==========================================
--- Step 5 : Update
--- ==========================================
+
 
 UPDATE professors
 SET salary = salary + 5000
 WHERE professor_id > 0;
 
--- ==========================================
--- Step 6 : Delete
--- ==========================================
+
 
 DELETE FROM enrollments
 WHERE grade='B';
 
--- ==========================================
--- Step 7 : Joins
--- ==========================================
 
 SELECT
 s.first_name,
@@ -130,9 +112,6 @@ ON s.student_id=e.student_id
 JOIN courses c
 ON e.course_id=c.course_id;
 
--- ==========================================
--- Step 8 : Final Verification
--- ==========================================
 
 SELECT * FROM departments;
 SELECT * FROM students;
